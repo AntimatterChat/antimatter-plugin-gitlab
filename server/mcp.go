@@ -12,7 +12,7 @@ import (
 	"github.com/mattermost/mattermost-plugin-agents/external/pluginmcp"
 	"golang.org/x/oauth2"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
 )
 
 const (

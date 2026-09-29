@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/xanzy/go-gitlab"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 )
 
 type testDataIssueStr struct {

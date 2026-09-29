@@ -22,8 +22,8 @@ import (
 	"github.com/stretchr/testify/require"
 	gitlabLib "github.com/xanzy/go-gitlab"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
-	"github.com/mattermost/mattermost-plugin-gitlab/server/webhook"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/webhook"
 )
 
 type fakeWebhookHandler struct{}

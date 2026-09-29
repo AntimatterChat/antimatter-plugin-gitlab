@@ -3,7 +3,7 @@
 
 package webhook
 
-import "github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+import "github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 
 const (
 	DeploymentsKey  = "deployments"

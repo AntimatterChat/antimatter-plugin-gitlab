@@ -24,8 +24,8 @@ import (
 	gomock "go.uber.org/mock/gomock"
 	"golang.org/x/oauth2"
 
-	gitlabapi "github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
-	mockgitlab "github.com/mattermost/mattermost-plugin-gitlab/server/mocks"
+	gitlabapi "github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
+	mockgitlab "github.com/antimatterchat/antimatter-plugin-gitlab/server/mocks"
 )
 
 // --- MCP lifecycle tests ----------------------------------------------------

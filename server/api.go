@@ -27,8 +27,8 @@ import (
 	"github.com/mattermost/mattermost/server/public/pluginapi/experimental/flow"
 	internGitlab "github.com/xanzy/go-gitlab"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
-	"github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 )
 
 var oauthStateRegexp = regexp.MustCompile(`^[a-z0-9]{15}_[a-z0-9]{26}$`)

@@ -14,7 +14,7 @@ import (
 	"github.com/mattermost/mattermost/server/public/pluginapi"
 	"github.com/pkg/errors"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
 )
 
 // configuration captures the plugin's external configuration as exposed in the Mattermost server

@@ -11,7 +11,7 @@ import (
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 	internGitlab "github.com/xanzy/go-gitlab"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
 )
 
 // ============================================================================

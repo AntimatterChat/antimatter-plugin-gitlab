@@ -73,4 +73,4 @@ formatters:
           replacement: any
     goimports:
       local-prefixes:
-        - github.com/mattermost/mattermost-plugin-gitlab
+        - github.com/antimatterchat/antimatter-plugin-gitlab

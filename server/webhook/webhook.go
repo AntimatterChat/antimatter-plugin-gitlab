@@ -11,7 +11,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 
 	"github.com/microcosm-cc/bluemonday"
 	"github.com/xanzy/go-gitlab"

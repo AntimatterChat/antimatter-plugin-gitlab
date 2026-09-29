@@ -9,7 +9,7 @@ import (
 
 	"github.com/xanzy/go-gitlab"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 )
 
 func (w *webhook) HandleMergeRequest(ctx context.Context, event *gitlab.MergeEvent) ([]*HandleWebhook, []string, error) {

@@ -19,8 +19,8 @@ import (
 	gitLabAPI "github.com/xanzy/go-gitlab"
 	"go.uber.org/mock/gomock"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/gitlab"
-	mocks "github.com/mattermost/mattermost-plugin-gitlab/server/gitlab/mocks"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
+	mocks "github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab/mocks"
 )
 
 type subscribeCommandTest struct {

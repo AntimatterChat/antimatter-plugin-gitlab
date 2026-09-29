@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mattermost/mattermost-plugin-gitlab/server/subscription"
+	"github.com/antimatterchat/antimatter-plugin-gitlab/server/subscription"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
