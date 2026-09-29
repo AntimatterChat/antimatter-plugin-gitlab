@@ -237,7 +237,7 @@ func TestResolveCaller_NoUserID(t *testing.T) {
 	p := &Plugin{}
 	_, _, err := p.resolveCaller(context.Background())
 	require.Error(t, err)
-	assert.Contains(t, err.Error(), "no Mattermost user ID")
+	assert.Contains(t, err.Error(), "no Antimatter user ID")
 }
 
 // --- splitProjectPath tests -------------------------------------------------
@@ -325,7 +325,7 @@ func TestHandleGetIssue_Validation(t *testing.T) {
 		p, _ := newPluginWithMockGitlab(t)
 		_, _, err := p.handleGetIssue(context.Background(), nil, GetIssueInput{ProjectPath: "g/p", IssueIID: 1})
 		require.Error(t, err)
-		assert.Contains(t, err.Error(), "no Mattermost user ID")
+		assert.Contains(t, err.Error(), "no Antimatter user ID")
 	})
 }
 

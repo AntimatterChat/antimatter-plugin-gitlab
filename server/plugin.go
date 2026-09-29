@@ -560,7 +560,7 @@ func (p *Plugin) getGitlabIDToUsernameMapping(gitlabUserID string) string {
 func (p *Plugin) disconnectGitlabAccount(userID string) {
 	userInfo, apiErr := p.getGitlabUserInfoByAntimatterID(userID)
 	if apiErr != nil {
-		p.client.Log.Warn("can't get GitLab user info from mattermost id, attempting best-effort cleanup",
+		p.client.Log.Warn("can't get GitLab user info from antimatter id, attempting best-effort cleanup",
 			"err", apiErr.Message, "user_id", userID)
 		// Fall back to best-effort cleanup using only the userID, in case the user is
 		// in a partial state (e.g., _userinfo is missing but a token key still exists).
@@ -908,7 +908,7 @@ func (p *Plugin) sendChannelSubscriptionsUpdated(subs *Subscriptions, channelID 
 }
 
 // HasProjectHook checks if the subscribed GitLab Project or its parrent Group has a webhook
-// with a URL that matches the Mattermost Site URL.
+// with a URL that matches the Antimatter Site URL.
 func (p *Plugin) HasProjectHook(ctx context.Context, user *gitlab.UserInfo, namespace string, project string) (bool, error) {
 	var hooks []*gitlab.WebhookInfo
 	err := p.useGitlabClient(user, func(info *gitlab.UserInfo, token *oauth2.Token) error {
@@ -941,7 +941,7 @@ func (p *Plugin) HasProjectHook(ctx context.Context, user *gitlab.UserInfo, name
 }
 
 // HasGroupHook checks if the subscribed GitLab Group has a webhook
-// with a URL that matches the Mattermost Site URL.
+// with a URL that matches the Antimatter Site URL.
 func (p *Plugin) HasGroupHook(ctx context.Context, user *gitlab.UserInfo, namespace string) (bool, error) {
 	var hooks []*gitlab.WebhookInfo
 	err := p.useGitlabClient(user, func(info *gitlab.UserInfo, token *oauth2.Token) error {
@@ -967,9 +967,9 @@ func (p *Plugin) HasGroupHook(ctx context.Context, user *gitlab.UserInfo, namesp
 	return found, err
 }
 
-// getUsername returns the GitLab username for a given Mattermost user,
+// getUsername returns the GitLab username for a given Antimatter user,
 // if the user is connected to GitLab via this plugin.
-// Otherwise it returns the Mattermost username.
+// Otherwise it returns the Antimatter username.
 // One use of this function is to include an at-mention username in the GitLab comment itself.
 func (p *Plugin) getUsername(userID string) (string, *APIErrorResponse) {
 	info, err := p.getGitlabUserInfoByAntimatterID(userID)

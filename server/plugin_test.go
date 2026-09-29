@@ -225,7 +225,7 @@ func TestNotifyUsersOfDisallowedSubscriptions(t *testing.T) {
 
 func TestGetOAuthConfig(t *testing.T) {
 	t.Run("returns error when no instance and no legacy credentials", func(t *testing.T) {
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -247,7 +247,7 @@ func TestGetOAuthConfig(t *testing.T) {
 	})
 
 	t.Run("falls back to legacy plugin settings when instance not found", func(t *testing.T) {
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -279,7 +279,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		instanceList := []string{"production"}
 		instanceListJSON, _ := json.Marshal(instanceList)
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -301,7 +301,7 @@ func TestGetOAuthConfig(t *testing.T) {
 	})
 
 	t.Run("returns error when GitLab URL is malformed", func(t *testing.T) {
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -340,7 +340,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		}
 		instanceConfigJSON, _ := json.Marshal(instanceConfigMap)
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -378,7 +378,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		}
 		instanceConfigJSON, _ := json.Marshal(instanceConfigMap)
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -407,7 +407,7 @@ func TestGetOAuthConfig(t *testing.T) {
 }
 
 func TestRefreshTokenReturnsErrorWhenOAuthConfigFails(t *testing.T) {
-	siteURL := "https://mattermost.example.com"
+	siteURL := "https://antimatter.example.com"
 	amConfig := &model.Config{}
 	amConfig.ServiceSettings.SiteURL = &siteURL
 

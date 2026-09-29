@@ -347,7 +347,7 @@ func (p *Plugin) permissionToSubscribe(ctx context.Context, userID, namespace, p
 	return effectiveAccess(result.Permissions) > gitlabLib.GuestPermissions
 }
 
-// fetchProjectAsUser loads a project using the given Mattermost user's GitLab
+// fetchProjectAsUser loads a project using the given Antimatter user's GitLab
 // token. It returns nil when the namespace is blocked, the user is unknown, or
 // GitLab denies access.
 func (p *Plugin) fetchProjectAsUser(ctx context.Context, userID, namespace, project string) *gitlabLib.Project {

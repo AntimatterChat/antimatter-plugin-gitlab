@@ -470,7 +470,7 @@ func TestReEncryptUserToken_KVGetError(t *testing.T) {
 // TestGetGitlabUserTokenByAntimatterID (fallback decryption)
 // ---------------------------------------------------------------------------
 
-func TestGetGitlabUserTokenByMattermostID_FallbackToPreviousKey(t *testing.T) {
+func TestGetGitlabUserTokenByAntimatterID_FallbackToPreviousKey(t *testing.T) {
 	api := &plugintest.API{}
 	p := makeReencryptPlugin(t, api)
 	p.configuration.PreviousEncryptionKey = testOldEncryptionKey
@@ -488,7 +488,7 @@ func TestGetGitlabUserTokenByMattermostID_FallbackToPreviousKey(t *testing.T) {
 	api.AssertExpectations(t)
 }
 
-func TestGetGitlabUserTokenByMattermostID_BothKeysFail(t *testing.T) {
+func TestGetGitlabUserTokenByAntimatterID_BothKeysFail(t *testing.T) {
 	api := &plugintest.API{}
 	p := makeReencryptPlugin(t, api)
 	p.configuration.PreviousEncryptionKey = testOldEncryptionKey

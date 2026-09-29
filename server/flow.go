@@ -109,7 +109,7 @@ func (p *Plugin) NewFlowManager() (*FlowManager, error) {
 	webhookFlow.WithSteps(
 		fm.stepWebhookQuestion(),
 		flow.NewStep(stepWebhookConfirmation).
-			WithText("Use `/gitlab subscriptions add` to subscribe any Mattermost channel to your GitLab repository. [Learn more](https://mattermost.gitbook.io/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
+			WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://docs.antimatter.example/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
 			Terminal(),
 
 		fm.stepCancel("setup webhook"),
@@ -210,7 +210,7 @@ func cancelButton() flow.Button {
 func (fm *FlowManager) stepCancel(command string) flow.Step {
 	return flow.NewStep(stepCancel).
 		Terminal().
-		WithText(fmt.Sprintf("Gitlab integration setup has stopped. Restart setup later by running `/gitlab %s`. Learn more about the plugin [here](https://mattermost.gitbook.io/plugin-gitlab/).", command)).
+		WithText(fmt.Sprintf("Gitlab integration setup has stopped. Restart setup later by running `/gitlab %s`. Learn more about the plugin [here](https://docs.antimatter.example/plugin-gitlab/).", command)).
 		WithColor(flow.ColorDanger)
 }
 
@@ -262,7 +262,7 @@ func (fm *FlowManager) StartOauthWizard(userID string) error {
 }
 
 func (fm *FlowManager) stepWelcome() flow.Step {
-	welcomePretext := ":wave: Welcome to your GitLab integration! [Learn more](https://mattermost.gitbook.io/plugin-gitlab/)"
+	welcomePretext := ":wave: Welcome to your GitLab integration! [Learn more](https://docs.antimatter.example/plugin-gitlab/)"
 
 	welcomeText := `
 {{- if .UsePreregisteredApplication -}}
@@ -431,11 +431,11 @@ func (fm *FlowManager) submitGitlabURL(f *flow.Flow, submitted map[string]any) (
 func (fm *FlowManager) stepOAuthInfo() flow.Step {
 	oauthPretext := `
 ##### :white_check_mark: Step 1: Register an OAuth Application in GitLab
-You must first register the Mattermost GitLab Plugin as an authorized OAuth app.`
+You must first register the Antimatter GitLab Plugin as an authorized OAuth app.`
 	oauthMessage := fmt.Sprintf(""+
 		"1. In a browser, go to {{ .GitlabURL }}/-/profile/applications.\n"+
 		"2. Set the following values:\n"+
-		"	- Name: `Mattermost GitLab Plugin - <your company name>`\n"+
+		"	- Name: `Antimatter GitLab Plugin - <your company name>`\n"+
 		"	- Redirect URI: `%s/oauth/complete`\n"+
 		"3. Unselect **Expire access tokens**.\n"+
 		"4. Select `api` and `read_user` in Scopes.\n"+
@@ -575,7 +575,7 @@ func (fm *FlowManager) StartWebhookWizard(userID string) error {
 
 func (fm *FlowManager) stepWebhookQuestion() flow.Step {
 	questionPretext := `##### :white_check_mark: Step {{ if .UsePreregisteredApplication }}2{{ else }}3{{ end }}: Create a Webhook in GitLab
-The final setup step requires a Mattermost System Admin to create a webhook for each GitLab group or project to receive notifications for, or want to subscribe to.`
+The final setup step requires an Antimatter System Admin to create a webhook for each GitLab group or project to receive notifications for, or want to subscribe to.`
 	return flow.NewStep(stepWebhookQuestion).
 		WithText("Do you want to create a webhook?").
 		WithPretext(questionPretext).
@@ -592,7 +592,7 @@ The final setup step requires a Mattermost System Admin to create a webhook for 
 						Type:        "text",
 						SubType:     "text",
 						Placeholder: "Enter GitLab project or group name",
-						HelpText:    "Specify the GitLab project or group to connect to Mattermost. For example, mattermost/mattermost-server.",
+						HelpText:    "Specify the GitLab project or group to connect to Antimatter. For example, my-group/my-project.",
 					},
 				},
 			},
@@ -691,7 +691,7 @@ func (fm *FlowManager) submitWebhook(f *flow.Flow, submitted map[string]any) (fl
 }
 
 func (fm *FlowManager) stepWebhookWarning() flow.Step {
-	warnText := "The GitLab plugin uses a webhook to connect a GitLab account to Mattermost to listen for incoming GitLab events. " +
+	warnText := "The GitLab plugin uses a webhook to connect a GitLab account to Antimatter to listen for incoming GitLab events. " +
 		"You can't subscribe a channel to a repository for notifications until webhooks are configured.\n" +
 		"Restart setup later by running `/gitab setup webhook`"
 
@@ -703,8 +703,8 @@ func (fm *FlowManager) stepWebhookWarning() flow.Step {
 
 func (fm *FlowManager) stepWebhookConfirmation() flow.Step {
 	return flow.NewStep(stepWebhookConfirmation).
-		WithTitle("Success! :tada: You've successfully set up your Mattermost GitLab integration! ").
-		WithText("Use `/gitlab subscriptions add` to subscribe any Mattermost channel to your GitLab repository. [Learn more](https://mattermost.gitbook.io/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
+		WithTitle("Success! :tada: You've successfully set up your Antimatter GitLab integration! ").
+		WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://docs.antimatter.example/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
 		Next("")
 }
 
@@ -722,7 +722,7 @@ func (fm *FlowManager) StartAnnouncementWizard(userID string) error {
 func (fm *FlowManager) stepAnnouncementQuestion() flow.Step {
 	defaultMessage := "Hi team,\n" +
 		"\n" +
-		"We've set up the Mattermost Gitlab plugin to enable notifications from Gitlab in Mattermost. To get started, run the `/gitlab connect` slash command from any channel within Mattermost to connect that channel with GitLab. See the [documentation](https://mattermost.gitbook.io/plugin-gitlab/) for details on using the GitLab plugin."
+		"We've set up the Antimatter Gitlab plugin to enable notifications from Gitlab in Antimatter. To get started, run the `/gitlab connect` slash command from any channel within Antimatter to connect that channel with GitLab. See the [documentation](https://docs.antimatter.example/plugin-gitlab/) for details on using the GitLab plugin."
 
 	return flow.NewStep(stepAnnouncementQuestion).
 		WithText("Want to let your team know?").

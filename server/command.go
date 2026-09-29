@@ -20,8 +20,8 @@ import (
 	"github.com/antimatterchat/antimatter-plugin-gitlab/server/gitlab"
 )
 
-const commandHelp = `* |/gitlab connect| - Connect your Mattermost account to your GitLab account
-* |/gitlab disconnect| - Disconnect your Mattermost account from your GitLab account
+const commandHelp = `* |/gitlab connect| - Connect your Antimatter account to your GitLab account
+* |/gitlab disconnect| - Disconnect your Antimatter account from your GitLab account
 * |/gitlab todo| - Get a list of todos, assigned issues, assigned merge requests and merge requests awaiting your review
 * |/gitlab subscriptions list| - Will list the current channel subscriptions
 * |/gitlab subscriptions add owner[/repo] [features]| - Subscribe the current channel to receive notifications about opened merge requests and issues for a group or repository
@@ -349,7 +349,7 @@ func (p *Plugin) handleConnect(args *model.CommandArgs, parameters []string) (*m
 }
 
 func (p *Plugin) handleHelp(args *model.CommandArgs, parameters []string) (*model.CommandResponse, *model.AppError) {
-	text := "###### Mattermost GitLab Plugin - Slash Command Help\n" + strings.ReplaceAll(commandHelp, "|", "`")
+	text := "###### Antimatter GitLab Plugin - Slash Command Help\n" + strings.ReplaceAll(commandHelp, "|", "`")
 	return p.getCommandResponse(args, text, true), nil
 }
 
@@ -1207,7 +1207,7 @@ func (p *Plugin) getAutocompleteData(config *configuration) *model.AutocompleteD
 	setup := model.NewAutocompleteData("setup", "[command]", "Available commands: oauth, webhook, announcement")
 	setup.RoleID = model.SystemAdminRoleId
 	setup.AddCommand(model.NewAutocompleteData("oauth", "", "Set up the OAuth2 Application in GitLab"))
-	setup.AddCommand(model.NewAutocompleteData("webhook", "", "Create a webhook from GitLab to Mattermost"))
+	setup.AddCommand(model.NewAutocompleteData("webhook", "", "Create a webhook from GitLab to Antimatter"))
 	setup.AddCommand(model.NewAutocompleteData("announcement", "", "Announce to your team that they can use GitLab integration"))
 	gitlab.AddCommand(setup)
 
@@ -1229,5 +1229,5 @@ func (p *Plugin) getUninstallInstanceAutoCompleteData() []model.AutocompleteList
 }
 
 func (p *Plugin) getConnectInstanceAutoCompleteData() []model.AutocompleteListItem {
-	return buildInstanceAutocompleteItems(p.getInstanceList(), "Connect your Mattermost account to '%s' instance")
+	return buildInstanceAutocompleteItems(p.getInstanceList(), "Connect your Antimatter account to '%s' instance")
 }

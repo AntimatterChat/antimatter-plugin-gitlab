@@ -19,7 +19,7 @@ const (
 	mcpBasePath   = "/mcp"
 	mcpServerName = "GitLab"
 
-	// minServerVersionForMCP is the minimum Mattermost server version that
+	// minServerVersionForMCP is the minimum Antimatter server version that
 	// stamps the trusted Mattermost-Plugin-ID header on inter-plugin RPC and
 	// supports PluginHTTPStream, both required by the Agents MCP bridge. On
 	// older servers registration is rejected with a 401, so we skip it.
@@ -52,7 +52,7 @@ func (p *Plugin) startMCP() {
 	}
 
 	if serverVersion := p.API.GetServerVersion(); !serverSupportsMCP(serverVersion) {
-		p.API.LogWarn("Skipping GitLab MCP registration: Mattermost server is older than the version required by the Agents MCP bridge. Upgrade the server to expose GitLab tools to Agents.",
+		p.API.LogWarn("Skipping GitLab MCP registration: Antimatter server is older than the version required by the Agents MCP bridge. Upgrade the server to expose GitLab tools to Agents.",
 			"server_version", serverVersion,
 			"required_version", minServerVersionForMCP,
 		)
@@ -80,7 +80,7 @@ func (p *Plugin) startMCP() {
 	_ = s.Register()
 }
 
-// serverSupportsMCP reports whether the running Mattermost server is new enough
+// serverSupportsMCP reports whether the running Antimatter server is new enough
 // for the Agents MCP bridge. An unparseable/empty version is treated as
 // supported so a version-string quirk never silently disables the feature.
 func serverSupportsMCP(serverVersion string) bool {
@@ -117,14 +117,14 @@ func (p *Plugin) serveMCPHTTP(w http.ResponseWriter, r *http.Request) {
 	s.ServeHTTP(w, r)
 }
 
-// resolveCaller extracts the Mattermost user ID injected by the Agents plugin,
+// resolveCaller extracts the Antimatter user ID injected by the Agents plugin,
 // then retrieves the user's GitLab UserInfo and a valid (possibly refreshed)
 // OAuth token.  It returns an error if the user has not connected their GitLab
 // account.
 func (p *Plugin) resolveCaller(ctx context.Context) (*gitlab.UserInfo, *oauth2.Token, error) {
 	userID := pluginmcp.GetUserID(ctx)
 	if userID == "" {
-		return nil, nil, fmt.Errorf("no Mattermost user ID in context (request did not arrive through the Agents plugin)")
+		return nil, nil, fmt.Errorf("no Antimatter user ID in context (request did not arrive through the Agents plugin)")
 	}
 
 	info, apiErr := p.getGitlabUserInfoByAntimatterID(userID)

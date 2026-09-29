@@ -429,8 +429,8 @@ func (p *Plugin) completeConnectUserToGitlab(c *Context, w http.ResponseWriter, 
 	} else {
 		// Only post introduction message if no setup wizard is running
 		// Post intro post
-		message := fmt.Sprintf("#### Welcome to the Mattermost GitLab Plugin!\n"+
-			"You've connected your Mattermost account to %s on GitLab. Read about the features of this plugin below:\n\n"+
+		message := fmt.Sprintf("#### Welcome to the Antimatter GitLab Plugin!\n"+
+			"You've connected your Antimatter account to %s on GitLab. Read about the features of this plugin below:\n\n"+
 			"##### Daily Reminders\n"+
 			"The first time you log in each day, you will get a post right here letting you know what messages you need to read and what merge requests are awaiting your review.\n"+
 			"Turn off reminders with `/gitlab settings reminders off`.\n\n"+
@@ -438,7 +438,7 @@ func (p *Plugin) completeConnectUserToGitlab(c *Context, w http.ResponseWriter, 
 			"When someone mentions you, requests your review, comments on or modifies one of your merge requests/issues, or assigns you, you'll get a post here about it.\n"+
 			"Turn off notifications with `/gitlab settings notifications off`.\n\n"+
 			"##### Sidebar Buttons\n"+
-			"Check out the buttons in the left-hand sidebar of Mattermost.\n"+
+			"Check out the buttons in the left-hand sidebar of Antimatter.\n"+
 			"* The first button tells you how many merge requests you are assigned to.\n"+
 			"* The second shows the number of merge requests that are awaiting your review.\n"+
 			"* The third shows the number of issues you are assigned to.\n"+

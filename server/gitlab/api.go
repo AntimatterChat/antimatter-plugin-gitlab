@@ -1119,7 +1119,7 @@ func (g *gitlab) ResolveNamespaceAndProject(
 	if group != nil {
 		if !allowPrivate && group.Visibility != internGitlab.PublicVisibility {
 			return "", "", errors.Wrap(ErrPrivateResource,
-				"You can't add a private group on this Mattermost instance. Please enable private repositories in the System Console.",
+				"You can't add a private group on this Antimatter instance. Please enable private repositories in the System Console.",
 			)
 		}
 		return group.FullPath, "", nil
@@ -1128,7 +1128,7 @@ func (g *gitlab) ResolveNamespaceAndProject(
 	if project != nil {
 		if !allowPrivate && project.Visibility != internGitlab.PublicVisibility {
 			return "", "", errors.Wrap(ErrPrivateResource,
-				"You can't add a private group on this Mattermost instance. Please enable private repositories in the System Console.",
+				"You can't add a private group on this Antimatter instance. Please enable private repositories in the System Console.",
 			)
 		}
 		return project.Namespace.FullPath, project.Path, nil

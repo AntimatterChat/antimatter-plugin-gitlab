@@ -285,7 +285,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 	setupPlugin := func(t *testing.T) *Plugin {
 		t.Helper()
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -359,7 +359,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 	t.Run("passes validation with correctly formatted state and matching user", func(t *testing.T) {
 		state := "abcdefghijklmno_" + validUserID
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 
@@ -409,7 +409,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 	t.Run("returns error when KV delete of state token fails", func(t *testing.T) {
 		state := "abcdefghijklmno_" + validUserID
 
-		siteURL := "https://mattermost.example.com"
+		siteURL := "https://antimatter.example.com"
 		amConfig := &model.Config{}
 		amConfig.ServiceSettings.SiteURL = &siteURL
 

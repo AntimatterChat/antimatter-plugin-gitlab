@@ -716,7 +716,7 @@ func setupInstanceCommandTest(t *testing.T, instanceList []string, instanceConfi
 	api.On("SavePluginConfig", mock.Anything).Return(nil)
 	api.On("LogError", mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
-	siteURL := "https://mattermost.example.com"
+	siteURL := "https://antimatter.example.com"
 	conf := &model.Config{}
 	conf.ServiceSettings.SiteURL = &siteURL
 	api.On("GetConfig", mock.Anything).Return(conf)

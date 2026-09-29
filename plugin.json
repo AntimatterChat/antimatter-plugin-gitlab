@@ -1,9 +1,9 @@
 {
     "id": "com.github.manland.mattermost-plugin-gitlab",
     "name": "GitLab",
-    "description": "GitLab plugin for Mattermost.",
-    "homepage_url": "https://github.com/mattermost/mattermost-plugin-gitlab",
-    "support_url": "https://github.com/mattermost/mattermost-plugin-gitlab/issues",
+    "description": "GitLab plugin for Antimatter.",
+    "homepage_url": "https://github.com/antimatterchat/antimatter-plugin-gitlab",
+    "support_url": "https://github.com/antimatterchat/antimatter-plugin-gitlab/issues",
     "icon_path": "assets/icon.svg",
     "min_server_version": "12.0.0",
     "server": {
@@ -21,13 +21,13 @@
     },
     "settings_schema": {
         "header": "To set up the GitLab plugin, you need to register a GitLab OAuth app here https://gitlab.com/-/profile/applications.",
-        "footer": "To report an issue, make a suggestion, or submit a contribution, [check the repository](https://github.com/mattermost/mattermost-plugin-gitlab).",
+        "footer": "To report an issue, make a suggestion, or submit a contribution, [check the repository](https://github.com/antimatterchat/antimatter-plugin-gitlab).",
         "settings": [
             {
                 "key": "UsePreregisteredApplication",
                 "display_name": "Use Preregistered OAuth Application:",
                 "type": "bool",
-                "help_text": "When true, instructs the plugin to use the preregistered GitLab OAuth application - application registration steps can be skipped. Requires [Chimera Proxy](https://github.com/mattermost/chimera) URL to be configured for the server. Can only be used with official gitlab.com.",
+                "help_text": "When true, instructs the plugin to use the preregistered GitLab OAuth application - application registration steps can be skipped. Requires Chimera Proxy URL to be configured for the server. Can only be used with official gitlab.com.",
                 "placeholder": "",
                 "default": false,
                 "hosting": "cloud"

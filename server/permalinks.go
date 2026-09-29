@@ -166,7 +166,7 @@ func (p *Plugin) processReplacement(r replacement, glClient *gitlab.Client, wg *
 
 // makeReplacements performs the given replacements on the msg and returns
 // the new msg. The replacements slice needs to be sorted by the index in ascending order.
-// Ref: mattermost plugin github (https://github.com/mattermost/mattermost-plugin-github/blob/fcc50523c17c2670cb595a8038864a8a7f7fd1e5/server/plugin/permalinks.go#L90)
+// Ref: antimatter plugin github (https://github.com/antimatterchat/antimatter-plugin-github/blob/fcc50523c17c2670cb595a8038864a8a7f7fd1e5/server/plugin/permalinks.go#L90)
 func (p *Plugin) makeReplacements(msg string, replacements []replacement, glClient *gitlab.Client) string {
 	// Iterating the slice in reverse to preserve the replacement indices.
 	wg := new(sync.WaitGroup)
