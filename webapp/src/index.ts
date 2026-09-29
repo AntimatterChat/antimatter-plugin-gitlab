@@ -36,7 +36,7 @@ import manifest from './manifest';
 import Client from './client';
 import Hooks from './hooks';
 
-import {FormatTextOptions, MessageHtmlToComponentOptions, PluginRegistry} from './types/mattermost-webapp';
+import {FormatTextOptions, MessageHtmlToComponentOptions, PluginRegistry} from './types/antimatter-webapp';
 
 let activityFunc: (() => void) | undefined;
 let lastActivityTime = Number.MAX_SAFE_INTEGER;

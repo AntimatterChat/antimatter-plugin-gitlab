@@ -24,7 +24,7 @@ describe('validateGitlabUrl should work as expected', () => {
 
 describe('isValidUrl should work as expected', () => {
     it('should return true for a valid URL', () => {
-        expect(isValidUrl('https://mattermost.com')).toBe(true);
+        expect(isValidUrl('https://docs.antimatter.example')).toBe(true);
     });
 
     it.each(['abc@example.com', 'xyz', '://example.com', 'example.com'])('should return false for invalid URLs %s', (input) => {

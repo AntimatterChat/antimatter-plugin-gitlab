@@ -1,7 +1,7 @@
 {
     "name": "gitlab",
     "version": "0.1.0",
-    "description": "GitLab plugin for Mattermost",
+    "description": "GitLab plugin for Antimatter",
     "main": "src/index.js",
     "scripts": {
         "build": "webpack --mode=production",

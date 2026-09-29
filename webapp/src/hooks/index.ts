@@ -7,7 +7,7 @@ import {isDesktopApp} from 'src/utils/user_agent';
 import {connectUsingBrowserMessage} from 'src/constants';
 
 import {sendEphemeralPost} from '../actions';
-import {ContextArgs} from '../types/mattermost-webapp';
+import {ContextArgs} from '../types/antimatter-webapp';
 
 const connectCommand = '/gitlab connect';
 

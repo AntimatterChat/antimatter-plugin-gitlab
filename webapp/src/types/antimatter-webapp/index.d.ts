@@ -36,5 +36,5 @@ export interface PluginRegistry {
     registerRootComponent(component: React.ComponentType<any>)
     registerRHSPluginPopoutListener?: (pluginId: string, callback: (teamName: string, channelName: string, listeners: RHSPluginPopoutListeners) => void) => void
 
-    // Add more if needed from https://developers.mattermost.com/extend/plugins/webapp/reference
+    // Add more if needed from https://docs.antimatter.example/extend/plugins/webapp/reference
 }

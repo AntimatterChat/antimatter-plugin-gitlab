@@ -17,7 +17,7 @@ interface GitLabRHSProps {
 
 /**
  * Unified RHS component that switches between SidebarRight and RHSSidebar
- * based on the rhsViewType state. This solves the issue of Mattermost not
+ * based on the rhsViewType state. This solves the issue of Antimatter not
  * properly handling multiple RHS components from the same plugin in popouts.
  */
 const GitLabRHS: React.FC<GitLabRHSProps> = ({rhsViewType, theme}: GitLabRHSProps) => {

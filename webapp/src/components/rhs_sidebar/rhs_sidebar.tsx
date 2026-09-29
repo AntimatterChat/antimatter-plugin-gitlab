@@ -6,7 +6,7 @@ import React from 'react';
 import {isDesktopApp} from 'src/utils/user_agent';
 import {connectUsingBrowserMessage} from 'src/constants';
 
-import MattermostGitLabSVG from './mattermost_gitlab';
+import AntimatterGitLabSVG from './antimatter_gitlab';
 import NoSubscriptionsSVG from './no_subscriptions';
 
 import './rhs_sidebar.css';
@@ -18,15 +18,15 @@ const NotSignedIn = (props: NotSignedInProps) => {
             props.sendEphemeralPost(connectUsingBrowserMessage);
             return;
         }
-        window.open(`${props.pluginServerRoute}/oauth/connect`, 'Connect Mattermost to GitLab', 'height=570,width=520');
+        window.open(`${props.pluginServerRoute}/oauth/connect`, 'Connect Antimatter to GitLab', 'height=570,width=520');
     };
 
     return (
         <div className='gitlab-rhs-NotSignedInDiv'>
-            <div className='gitlab-rhs-Welcome'>{'Welcome to the Mattermost GitLab plugin'}</div>
+            <div className='gitlab-rhs-Welcome'>{'Welcome to the Antimatter GitLab plugin'}</div>
             <hr className='gitlab-rhs-Hr'/>
-            <div className='gitlab-rhs-MattermostGitLab'>
-                <MattermostGitLabSVG/>
+            <div className='gitlab-rhs-AntimatterGitLab'>
+                <AntimatterGitLabSVG/>
             </div>
             <div className='gitlab-rhs-ConnectPrompt'>{'Connect your account'}<br/>{'to get started'}</div>
             <a

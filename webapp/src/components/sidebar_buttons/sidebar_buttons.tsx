@@ -84,7 +84,7 @@ export default class SidebarButtons extends PureComponent<SidebarButtonsProps, S
             this.props.actions.sendEphemeralPost(connectUsingBrowserMessage);
             return;
         }
-        window.open(`${this.props.pluginServerRoute}/oauth/connect`, 'Connect Mattermost to GitLab', 'height=570,width=520');
+        window.open(`${this.props.pluginServerRoute}/oauth/connect`, 'Connect Antimatter to GitLab', 'height=570,width=520');
     };
 
     openRHS = (rhsState: string): void => {
