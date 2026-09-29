@@ -189,7 +189,7 @@ func (p *Plugin) handleWebhook(w http.ResponseWriter, r *http.Request) {
 		for _, to := range res.ToUsers {
 			userTo := p.sendRefreshIfNotAlreadySent(alreadySentRefresh, to)
 			if len(userTo) > 0 && len(res.Message) > 0 {
-				info, err := p.getGitlabUserInfoByMattermostID(userTo)
+				info, err := p.getGitlabUserInfoByAntimatterID(userTo)
 				if err != nil {
 					p.client.Log.Warn("can't get user info to know if user wants to receive notifications", "err", err.Message)
 					continue
@@ -313,11 +313,11 @@ func (p *Plugin) sendRefreshIfNotAlreadySent(alreadySentRefresh map[string]bool,
 		return ""
 	}
 	alreadySentRefresh[gitlabUsername] = true
-	userMattermostID := p.getGitlabToUserIDMapping(gitlabUsername)
-	if len(userMattermostID) > 0 {
-		p.sendRefreshEvent(userMattermostID)
+	userAntimatterID := p.getGitlabToUserIDMapping(gitlabUsername)
+	if len(userAntimatterID) > 0 {
+		p.sendRefreshEvent(userAntimatterID)
 	}
-	return userMattermostID
+	return userAntimatterID
 }
 
 func (p *Plugin) permissionToProject(ctx context.Context, userID, namespace, project string) bool {
@@ -359,7 +359,7 @@ func (p *Plugin) fetchProjectAsUser(ctx context.Context, userID, namespace, proj
 		return nil
 	}
 
-	info, apiErr := p.getGitlabUserInfoByMattermostID(userID)
+	info, apiErr := p.getGitlabUserInfoByAntimatterID(userID)
 	if apiErr != nil {
 		return nil
 	}

@@ -27,7 +27,7 @@ type FlowManager struct {
 	instanceName                    string
 	router                          *mux.Router
 	getConfiguration                func() *configuration
-	getGitlabUserInfoByMattermostID func(userID string) (*gitlab.UserInfo, *APIErrorResponse)
+	getGitlabUserInfoByAntimatterID func(userID string) (*gitlab.UserInfo, *APIErrorResponse)
 	getGitlabClient                 func() gitlab.Gitlab
 	useGitlabClient                 func(info *gitlab.UserInfo, toRun func(info *gitlab.UserInfo, token *oauth2.Token) error) error
 	createHook                      func(ctx context.Context, gitlabClient gitlab.Gitlab, info *gitlab.UserInfo, group, project string, hookOptions *gitlab.AddWebhookOptions) (*gitlab.WebhookInfo, error)
@@ -48,7 +48,7 @@ func (p *Plugin) NewFlowManager() (*FlowManager, error) {
 		botUserID:                       p.BotUserID,
 		router:                          p.router,
 		getConfiguration:                p.getConfiguration,
-		getGitlabUserInfoByMattermostID: p.getGitlabUserInfoByMattermostID,
+		getGitlabUserInfoByAntimatterID: p.getGitlabUserInfoByAntimatterID,
 		getGitlabClient:                 p.getGitlabClient,
 		useGitlabClient:                 p.useGitlabClient,
 		createHook:                      p.createHook,
@@ -617,7 +617,7 @@ func (fm *FlowManager) submitWebhook(f *flow.Flow, submitted map[string]any) (fl
 
 	config := fm.getConfiguration()
 
-	info, apiErr := fm.getGitlabUserInfoByMattermostID(f.UserID)
+	info, apiErr := fm.getGitlabUserInfoByAntimatterID(f.UserID)
 	if apiErr != nil {
 		return "", nil, nil, apiErr
 	}

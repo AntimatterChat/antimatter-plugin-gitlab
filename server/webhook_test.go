@@ -431,12 +431,12 @@ func newIssueCommentWebhookRequest() *http.Request {
 func setupDedupTestPlugin(t *testing.T) (*Plugin, *plugintest.API) {
 	t.Helper()
 
-	const mattermostUserID = "1"
+	const antimatterUserID = "1"
 
 	p := &Plugin{configuration: &configuration{WebhookSecret: "secret"}, WebhookHandler: fakeWebhookHandler{}}
 
 	userInfo := &gitlab.UserInfo{
-		UserID:   mattermostUserID,
+		UserID:   antimatterUserID,
 		Settings: &gitlab.UserSettings{Notifications: true},
 	}
 	infoJSON, err := json.Marshal(userInfo)
@@ -444,12 +444,12 @@ func setupDedupTestPlugin(t *testing.T) (*Plugin, *plugintest.API) {
 
 	api := &plugintest.API{}
 	api.On("KVGet", "test_gitlabusername").Return(nil, nil)
-	api.On("KVGet", "known_gitlabusername").Return([]byte(mattermostUserID), nil)
-	api.On("KVGet", mattermostUserID+GitlabUserInfoKey).Return(infoJSON, nil)
+	api.On("KVGet", "known_gitlabusername").Return([]byte(antimatterUserID), nil)
+	api.On("KVGet", antimatterUserID+GitlabUserInfoKey).Return(infoJSON, nil)
 	api.On("PublishWebSocketEvent", WsEventRefresh, mock.Anything, mock.Anything).Return(nil)
 	api.On("LogInfo", "new msg", "message", "hello", "from", "test").Return(nil)
 	api.On("LogDebug", mock.Anything, "dedup_key", mock.Anything).Return(nil)
-	api.On("GetDirectChannel", mattermostUserID, p.BotUserID).Return(&model.Channel{Id: "dm-channel"}, nil)
+	api.On("GetDirectChannel", antimatterUserID, p.BotUserID).Return(&model.Channel{Id: "dm-channel"}, nil)
 	api.On("CreatePost", mock.MatchedBy(func(post *model.Post) bool {
 		return post.ChannelId == "dm-channel" && post.Message == "hello"
 	})).Return(&model.Post{}, nil)

@@ -131,7 +131,7 @@ func (p *Plugin) attachUserContext(handler HTTPHandlerFuncWithUserContext) http.
 		context, cancel := p.createContext(w, r)
 		defer cancel()
 
-		info, apiErr := p.getGitlabUserInfoByMattermostID(context.UserID)
+		info, apiErr := p.getGitlabUserInfoByAntimatterID(context.UserID)
 		if apiErr != nil {
 			p.writeAPIError(w, apiErr)
 			return
@@ -513,7 +513,7 @@ func (p *Plugin) getGitlabUser(c *Context, w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	userInfo, apiErr := p.getGitlabUserInfoByMattermostID(req.UserID)
+	userInfo, apiErr := p.getGitlabUserInfoByAntimatterID(req.UserID)
 	if apiErr != nil {
 		if apiErr.ID == APIErrorIDNotConnected {
 			p.writeAPIError(w, &APIErrorResponse{ID: "", Message: "User is not connected to a GitLab account.", StatusCode: http.StatusNotFound})
@@ -540,7 +540,7 @@ func (p *Plugin) getConnected(c *Context, w http.ResponseWriter, r *http.Request
 		Organization: config.GitlabGroup,
 	}
 
-	info, _ := p.getGitlabUserInfoByMattermostID(c.UserID)
+	info, _ := p.getGitlabUserInfoByAntimatterID(c.UserID)
 	if info != nil {
 		resp.Connected = true
 		resp.GitlabUsername = info.GitlabUsername
@@ -649,7 +649,7 @@ func (p *Plugin) createIssue(c *UserContext, w http.ResponseWriter, r *http.Requ
 	defer p.API.LogAuditRec(auditRec)
 
 	auditParams := CreateIssueAuditParams{
-		MattermostUserID: c.UserID,
+		AntimatterUserID: c.UserID,
 		ProjectID:        issue.ProjectID,
 	}
 
@@ -751,7 +751,7 @@ func (p *Plugin) attachCommentToIssue(c *UserContext, w http.ResponseWriter, r *
 	permalink := p.getPermalink(issue.PostID)
 
 	auditParams := AttachCommentToIssueAuditParams{
-		MattermostUserID: c.UserID,
+		AntimatterUserID: c.UserID,
 		ProjectID:        issue.ProjectID,
 	}
 
@@ -988,7 +988,7 @@ func (p *Plugin) updateSettings(c *UserContext, w http.ResponseWriter, r *http.R
 		return
 	}
 
-	info, apiErr := p.getGitlabUserInfoByMattermostID(c.UserID)
+	info, apiErr := p.getGitlabUserInfoByAntimatterID(c.UserID)
 	if apiErr != nil {
 		p.writeAPIError(w, apiErr)
 		return

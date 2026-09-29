@@ -185,7 +185,7 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (res
 		return p.handleConfigError(args, err)
 	}
 
-	info, apiErr := p.getGitlabUserInfoByMattermostID(args.UserId)
+	info, apiErr := p.getGitlabUserInfoByAntimatterID(args.UserId)
 	if apiErr != nil {
 		return p.handleUserNotConnected(args, apiErr)
 	}
@@ -678,7 +678,7 @@ func (p *Plugin) webhookCommand(ctx context.Context, parameters []string, info *
 		auditRec.Actor.UserId = info.UserID
 
 		auditParams := AddWebhookAuditParams{
-			MattermostUserID: info.UserID,
+			AntimatterUserID: info.UserID,
 			GitlabUsername:   info.GitlabUsername,
 			Namespace:        resolvedNamespace,
 			URL:              hookOptions.URL,

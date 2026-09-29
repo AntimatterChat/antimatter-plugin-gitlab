@@ -127,7 +127,7 @@ func (p *Plugin) resolveCaller(ctx context.Context) (*gitlab.UserInfo, *oauth2.T
 		return nil, nil, fmt.Errorf("no Mattermost user ID in context (request did not arrive through the Agents plugin)")
 	}
 
-	info, apiErr := p.getGitlabUserInfoByMattermostID(userID)
+	info, apiErr := p.getGitlabUserInfoByAntimatterID(userID)
 	if apiErr != nil {
 		return nil, nil, fmt.Errorf("GitLab account not connected: %s", apiErr.Message)
 	}

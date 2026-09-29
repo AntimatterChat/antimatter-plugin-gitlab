@@ -226,8 +226,8 @@ func TestNotifyUsersOfDisallowedSubscriptions(t *testing.T) {
 func TestGetOAuthConfig(t *testing.T) {
 	t.Run("returns error when no instance and no legacy credentials", func(t *testing.T) {
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{DefaultInstanceName: ""},
@@ -236,7 +236,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)
 		api.On("LogWarn", mock.Anything, mock.Anything, mock.Anything).Return(nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -248,8 +248,8 @@ func TestGetOAuthConfig(t *testing.T) {
 
 	t.Run("falls back to legacy plugin settings when instance not found", func(t *testing.T) {
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{
@@ -263,7 +263,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)
 		api.On("LogDebug", mock.Anything, mock.Anything, mock.Anything).Return(nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -280,8 +280,8 @@ func TestGetOAuthConfig(t *testing.T) {
 		instanceListJSON, _ := json.Marshal(instanceList)
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{DefaultInstanceName: "nonexistent"},
@@ -290,7 +290,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(instanceListJSON, nil)
 		api.On("LogWarn", mock.Anything, mock.Anything, mock.Anything).Return(nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -302,8 +302,8 @@ func TestGetOAuthConfig(t *testing.T) {
 
 	t.Run("returns error when GitLab URL is malformed", func(t *testing.T) {
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{
@@ -317,7 +317,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)
 		api.On("LogDebug", mock.Anything, mock.Anything, mock.Anything).Return(nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -341,8 +341,8 @@ func TestGetOAuthConfig(t *testing.T) {
 		instanceConfigJSON, _ := json.Marshal(instanceConfigMap)
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{
@@ -354,7 +354,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(instanceListJSON, nil)
 		api.On("KVGet", instanceConfigMapKey).Return(instanceConfigJSON, nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -379,8 +379,8 @@ func TestGetOAuthConfig(t *testing.T) {
 		instanceConfigJSON, _ := json.Marshal(instanceConfigMap)
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		p := &Plugin{
 			configuration: &configuration{
@@ -394,7 +394,7 @@ func TestGetOAuthConfig(t *testing.T) {
 		api := &plugintest.API{}
 		api.On("KVGet", instanceConfigNameListKey).Return(instanceListJSON, nil)
 		api.On("KVGet", instanceConfigMapKey).Return(instanceConfigJSON, nil)
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		p.SetAPI(api)
 		p.client = pluginapi.NewClient(api, p.Driver)
 
@@ -408,8 +408,8 @@ func TestGetOAuthConfig(t *testing.T) {
 
 func TestRefreshTokenReturnsErrorWhenOAuthConfigFails(t *testing.T) {
 	siteURL := "https://mattermost.example.com"
-	mmConfig := &model.Config{}
-	mmConfig.ServiceSettings.SiteURL = &siteURL
+	amConfig := &model.Config{}
+	amConfig.ServiceSettings.SiteURL = &siteURL
 
 	p := &Plugin{
 		configuration: &configuration{DefaultInstanceName: ""},
@@ -418,7 +418,7 @@ func TestRefreshTokenReturnsErrorWhenOAuthConfigFails(t *testing.T) {
 	api := &plugintest.API{}
 	api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)
 	api.On("LogWarn", mock.Anything, mock.Anything, mock.Anything).Return(nil)
-	api.On("GetConfig").Return(mmConfig)
+	api.On("GetConfig").Return(amConfig)
 	p.SetAPI(api)
 	p.client = pluginapi.NewClient(api, p.Driver)
 

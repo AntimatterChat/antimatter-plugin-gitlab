@@ -174,7 +174,7 @@ func (p *Plugin) OnPluginClusterEvent(c *plugin.Context, ev model.PluginClusterE
 }
 
 func (p *Plugin) UserHasBeenDeactivated(c *plugin.Context, user *model.User) {
-	if info, _ := p.getGitlabUserInfoByMattermostID(user.Id); info != nil {
+	if info, _ := p.getGitlabUserInfoByAntimatterID(user.Id); info != nil {
 		p.disconnectGitlabAccount(user.Id)
 	}
 }
@@ -194,7 +194,7 @@ func (p *Plugin) MessageWillBePosted(c *plugin.Context, post *model.Post) (*mode
 	if len(replacements) == 0 {
 		return nil, ""
 	}
-	info, err := p.getGitlabUserInfoByMattermostID(post.UserId)
+	info, err := p.getGitlabUserInfoByAntimatterID(post.UserId)
 	if err != nil {
 		if err.ID == APIErrorIDNotConnected {
 			p.API.LogDebug("Error while processing permalinks in the post", "Error", err.Error())
@@ -402,7 +402,7 @@ func (p *Plugin) deleteGitlabUserToken(userID string) error {
 	return nil
 }
 
-func (p *Plugin) getGitlabUserInfoByMattermostID(userID string) (*gitlab.UserInfo, *APIErrorResponse) {
+func (p *Plugin) getGitlabUserInfoByAntimatterID(userID string) (*gitlab.UserInfo, *APIErrorResponse) {
 	var userInfo gitlab.UserInfo
 
 	var infoBytes []byte
@@ -442,7 +442,7 @@ func (p *Plugin) migrateGitlabToken(userID string) (*oauth2.Token, *APIErrorResp
 	var gitlabTokenBytes []byte
 	err = p.client.KV.Get(userID+GitlabMigrationTokenKey, &gitlabTokenBytes)
 	if err != nil || gitlabTokenBytes == nil {
-		return p.getGitlabUserTokenByMattermostID(userID)
+		return p.getGitlabUserTokenByAntimatterID(userID)
 	}
 
 	if err = json.Unmarshal(gitlabTokenBytes, &userInfo); err != nil {
@@ -479,7 +479,7 @@ func (p *Plugin) migrateGitlabToken(userID string) (*oauth2.Token, *APIErrorResp
 	return userInfo.Token, nil
 }
 
-func (p *Plugin) getGitlabUserTokenByMattermostID(userID string) (*oauth2.Token, *APIErrorResponse) {
+func (p *Plugin) getGitlabUserTokenByAntimatterID(userID string) (*oauth2.Token, *APIErrorResponse) {
 	config := p.getConfiguration()
 	var token oauth2.Token
 
@@ -558,7 +558,7 @@ func (p *Plugin) getGitlabIDToUsernameMapping(gitlabUserID string) string {
 }
 
 func (p *Plugin) disconnectGitlabAccount(userID string) {
-	userInfo, apiErr := p.getGitlabUserInfoByMattermostID(userID)
+	userInfo, apiErr := p.getGitlabUserInfoByAntimatterID(userID)
 	if apiErr != nil {
 		p.client.Log.Warn("can't get GitLab user info from mattermost id, attempting best-effort cleanup",
 			"err", apiErr.Message, "user_id", userID)
@@ -972,7 +972,7 @@ func (p *Plugin) HasGroupHook(ctx context.Context, user *gitlab.UserInfo, namesp
 // Otherwise it returns the Mattermost username.
 // One use of this function is to include an at-mention username in the GitLab comment itself.
 func (p *Plugin) getUsername(userID string) (string, *APIErrorResponse) {
-	info, err := p.getGitlabUserInfoByMattermostID(userID)
+	info, err := p.getGitlabUserInfoByAntimatterID(userID)
 	if err != nil && err.ID != APIErrorIDNotConnected {
 		return "", err
 	} else if err != nil {
@@ -1171,7 +1171,7 @@ func (p *Plugin) reEncryptUserToken(kvKey, newEncryptionKey, previousEncryptionK
 func (p *Plugin) forceDisconnectUser(userID string) {
 	// Fetch user info for GitLab-specific mapping cleanup. User info is not encrypted,
 	// so this should succeed even after a key rotation.
-	userInfo, apiErr := p.getGitlabUserInfoByMattermostID(userID)
+	userInfo, apiErr := p.getGitlabUserInfoByAntimatterID(userID)
 	if apiErr != nil {
 		p.client.Log.Warn("Failed to load user info for force-disconnect",
 			"user_id", userID, "error", apiErr.Message)
@@ -1226,7 +1226,7 @@ func (p *Plugin) forceDisconnectUser(userID string) {
 // token turns out to be revoked; pass false on automated paths (e.g. MCP) that
 // may retry and would otherwise notify repeatedly.
 func (p *Plugin) getOrRefreshToken(info *gitlab.UserInfo, notifyOnRevoke bool) (*oauth2.Token, error) {
-	token, apiErr := p.getGitlabUserTokenByMattermostID(info.UserID)
+	token, apiErr := p.getGitlabUserTokenByAntimatterID(info.UserID)
 
 	if apiErr != nil {
 		token, apiErr = p.migrateGitlabToken(info.UserID)
@@ -1247,7 +1247,7 @@ func (p *Plugin) getOrRefreshToken(info *gitlab.UserInfo, notifyOnRevoke bool) (
 	mutex.Lock()
 	defer mutex.Unlock()
 
-	lockedToken, apiErr := p.getGitlabUserTokenByMattermostID(info.UserID)
+	lockedToken, apiErr := p.getGitlabUserTokenByAntimatterID(info.UserID)
 	if apiErr != nil {
 		return nil, apiErr
 	}

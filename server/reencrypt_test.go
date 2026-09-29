@@ -467,7 +467,7 @@ func TestReEncryptUserToken_KVGetError(t *testing.T) {
 }
 
 // ---------------------------------------------------------------------------
-// TestGetGitlabUserTokenByMattermostID (fallback decryption)
+// TestGetGitlabUserTokenByAntimatterID (fallback decryption)
 // ---------------------------------------------------------------------------
 
 func TestGetGitlabUserTokenByMattermostID_FallbackToPreviousKey(t *testing.T) {
@@ -480,7 +480,7 @@ func TestGetGitlabUserTokenByMattermostID_FallbackToPreviousKey(t *testing.T) {
 	tokenBytes := encryptedTokenWithKey(t, testOldEncryptionKey)
 	api.On("KVGet", kvKey).Return(tokenBytes, nil).Once()
 
-	tok, apiErr := p.getGitlabUserTokenByMattermostID(testUserID)
+	tok, apiErr := p.getGitlabUserTokenByAntimatterID(testUserID)
 	require.Nil(t, apiErr)
 	require.NotNil(t, tok)
 	assert.Equal(t, "test-access-token", tok.AccessToken)
@@ -498,7 +498,7 @@ func TestGetGitlabUserTokenByMattermostID_BothKeysFail(t *testing.T) {
 	// Garbage that neither key can decrypt.
 	api.On("KVGet", kvKey).Return([]byte("bm90LXZhbGlkLWJhc2U2NA=="), nil).Once()
 
-	tok, apiErr := p.getGitlabUserTokenByMattermostID(testUserID)
+	tok, apiErr := p.getGitlabUserTokenByAntimatterID(testUserID)
 	require.NotNil(t, apiErr)
 	assert.Nil(t, tok)
 	assert.Equal(t, "Unable to decrypt access token.", apiErr.Message)
@@ -541,7 +541,7 @@ func TestForceDisconnectUser_UserInfoNotFound(t *testing.T) {
 	// User info missing — partial cleanup using only userID.
 	infoKey := testUserID + GitlabUserInfoKey
 	api.On("KVGet", infoKey).Return(nil, nil).Once()
-	// getGitlabUserInfoByMattermostID falls back to the migration key when _userinfo is nil.
+	// getGitlabUserInfoByAntimatterID falls back to the migration key when _userinfo is nil.
 	api.On("KVGet", testUserID+GitlabMigrationTokenKey).Return(nil, nil).Once()
 
 	api.On("KVSetWithOptions", testUserID+GitlabUserTokenKey, isNilBytes, mock.AnythingOfType("model.PluginKVSetOptions")).Return(true, nil).Once()
@@ -590,7 +590,7 @@ func TestDisconnectGitlabAccount_FallbackWhenUserInfoMissing(t *testing.T) {
 	p := makeReencryptPlugin(t, api)
 	mockCommonLogCalls(api)
 
-	// getGitlabUserInfoByMattermostID reads _userinfo then _gitlabtoken; both return nil → not connected.
+	// getGitlabUserInfoByAntimatterID reads _userinfo then _gitlabtoken; both return nil → not connected.
 	// This is called twice: once in disconnectGitlabAccount and once inside forceDisconnectUser.
 	api.On("KVGet", testUserID+GitlabUserInfoKey).Return(nil, nil)
 	api.On("KVGet", testUserID+GitlabMigrationTokenKey).Return(nil, nil)

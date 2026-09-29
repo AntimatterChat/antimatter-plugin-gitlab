@@ -286,8 +286,8 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		t.Helper()
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		config := configuration{
 			GitlabURL:               "https://gitlab.example.com",
@@ -300,7 +300,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		p.initializeAPI()
 
 		api := &plugintest.API{}
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		api.On("KVGet", mock.Anything).Return(nil, nil).Maybe()
 		api.On("LogWarn", mock.Anything, mock.Anything, mock.Anything).Return(nil).Maybe()
 		api.On("LogDebug", mock.Anything, mock.Anything, mock.Anything).Return(nil).Maybe()
@@ -360,8 +360,8 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		state := "abcdefghijklmno_" + validUserID
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		config := configuration{
 			GitlabURL:               "https://gitlab.example.com",
@@ -374,7 +374,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		p.initializeAPI()
 
 		api := &plugintest.API{}
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		api.On("KVGet", state).Return([]byte(state), nil)
 		api.On("KVSetWithOptions", state, []byte(nil), mock.Anything).Return(true, nil)
 		api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)
@@ -410,8 +410,8 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		state := "abcdefghijklmno_" + validUserID
 
 		siteURL := "https://mattermost.example.com"
-		mmConfig := &model.Config{}
-		mmConfig.ServiceSettings.SiteURL = &siteURL
+		amConfig := &model.Config{}
+		amConfig.ServiceSettings.SiteURL = &siteURL
 
 		config := configuration{
 			GitlabURL:               "https://gitlab.example.com",
@@ -426,7 +426,7 @@ func TestCompleteConnectUserToGitlab_StateValidation(t *testing.T) {
 		kvDeleteErr := model.NewAppError("KVDelete", "plugin.kv_delete.error", nil, "storage failure", http.StatusInternalServerError)
 
 		api := &plugintest.API{}
-		api.On("GetConfig").Return(mmConfig)
+		api.On("GetConfig").Return(amConfig)
 		api.On("KVGet", state).Return([]byte(state), nil)
 		api.On("KVSetWithOptions", state, []byte(nil), mock.Anything).Return(false, kvDeleteErr)
 		api.On("KVGet", instanceConfigNameListKey).Return(nil, nil)

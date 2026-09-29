@@ -28,7 +28,7 @@ type subscribeCommandTest struct {
 	parameters     []string
 	want           string
 	webhookInfo    []*gitlab.WebhookInfo
-	mattermostURL  string
+	antimatterURL  string
 	noAccess       bool
 	projectHookErr error
 	getProjectErr  error
@@ -66,7 +66,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		want:          "You don't have the permissions to create subscriptions for this project.",
 		webhookInfo:   []*gitlab.WebhookInfo{{URL: "example.com/somewebhookURL"}},
 		noAccess:      true,
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		getProjectErr: errors.New("unable to get project"),
 	},
 	{
@@ -76,7 +76,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		want:          "You don't have the permissions to create subscriptions for this project.",
 		webhookInfo:   []*gitlab.WebhookInfo{{URL: "example.com/somewebhookURL"}},
 		noAccess:      true,
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 	},
 	{
 		testName:      "Hook Found",
@@ -84,12 +84,12 @@ var subscribeCommandTests = []subscribeCommandTest{
 		mockGitlab:    true,
 		want:          "Successfully subscribed to group/project.",
 		webhookInfo:   []*gitlab.WebhookInfo{{URL: "example.com/somewebhookURL"}},
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 	},
 	{
 		testName:      "No webhooks",
 		parameters:    []string{"add", "group/project"},
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		webhookInfo:   []*gitlab.WebhookInfo{{}},
 		mockGitlab:    true,
 		want:          subscribeSuccessMessage,
@@ -97,7 +97,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 	{
 		testName:      "Multiple un-matching hooks",
 		parameters:    []string{"add", "group/project"},
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		mockGitlab:    true,
 		webhookInfo:   []*gitlab.WebhookInfo{{URL: "www.anotherhook.io/wrong"}, {URL: "www.213210948239324.edu/notgood"}},
 		want:          subscribeSuccessMessage,
@@ -105,7 +105,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 	{
 		testName:       "Error getting webhooks",
 		parameters:     []string{"add", "group"},
-		mattermostURL:  "example.com",
+		antimatterURL:  "example.com",
 		mockGitlab:     true,
 		webhookInfo:    []*gitlab.WebhookInfo{{}},
 		want:           "Successfully subscribed to group.\nA Webhook is needed, run ```/gitlab webhook add group``` to create one now.\n**Note:** We are unable to determine the webhook status for this project. Please contact your project administrator",
@@ -145,7 +145,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		parameters:    []string{"add", "group", "confidential_issues"},
 		mockGitlab:    true,
 		want:          "You don't have the permissions to subscribe to confidential issues for this group.",
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		groupOnly:     true,
 		getGroupErr:   errors.New("403 Forbidden"),
 	},
@@ -154,7 +154,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		parameters:    []string{"add", "group", "confidential_issues"},
 		mockGitlab:    true,
 		want:          "Successfully subscribed to group.\nA Webhook is needed, run ```/gitlab webhook add group``` to create one now.",
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		groupOnly:     true,
 	},
 	{
@@ -162,7 +162,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		parameters:    []string{"add", "group", "issues"},
 		mockGitlab:    true,
 		want:          "Successfully subscribed to group.\nA Webhook is needed, run ```/gitlab webhook add group``` to create one now.",
-		mattermostURL: "example.com",
+		antimatterURL: "example.com",
 		groupOnly:     true,
 		// GetGroup is not mocked here, so gomock fails the test if it is called.
 	},
@@ -172,7 +172,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		mockGitlab:                true,
 		want:                      subscribeSuccessMessage,
 		webhookInfo:               []*gitlab.WebhookInfo{{}},
-		mattermostURL:             "example.com",
+		antimatterURL:             "example.com",
 		publicProjectNoMembership: true,
 	},
 	{
@@ -180,7 +180,7 @@ var subscribeCommandTests = []subscribeCommandTest{
 		parameters:                []string{"add", "group/project", "confidential_issues"},
 		mockGitlab:                true,
 		want:                      "You don't have the permissions to subscribe to confidential issues for this project.",
-		mattermostURL:             "example.com",
+		antimatterURL:             "example.com",
 		publicProjectNoMembership: true,
 		noAccess:                  true,
 	},
@@ -417,7 +417,7 @@ func getTestPlugin(t *testing.T, mockCtrl *gomock.Controller, test subscribeComm
 	p.GitlabClient = mockedClient
 
 	conf := &model.Config{}
-	conf.ServiceSettings.SiteURL = &test.mattermostURL
+	conf.ServiceSettings.SiteURL = &test.antimatterURL
 
 	encryptedToken, _ := encrypt([]byte(testEncryptionKey), testGitlabToken)
 

@@ -5,7 +5,7 @@ package main
 
 // CreateIssueAuditParams holds request audit data for the createIssue transaction.
 type CreateIssueAuditParams struct {
-	MattermostUserID string   `json:"mattermost_user_id"`
+	AntimatterUserID string   `json:"mattermost_user_id"`
 	GitlabUsername   string   `json:"gitlab_username"`
 	ProjectID        int      `json:"project_id"`
 	Title            string   `json:"title"`
@@ -19,7 +19,7 @@ type CreateIssueAuditParams struct {
 
 func (p CreateIssueAuditParams) Auditable() map[string]any {
 	return map[string]any{
-		"mattermost_user_id": p.MattermostUserID, "gitlab_username": p.GitlabUsername,
+		"mattermost_user_id": p.AntimatterUserID, "gitlab_username": p.GitlabUsername,
 		"project_id": p.ProjectID, "title": p.Title, "description_length": p.DescriptionLen,
 		"milestone_id": p.MilestoneID, "assignee_ids": p.AssigneeIDs, "labels": p.Labels,
 		"post_id": p.PostID, "channel_id": p.ChannelID,
@@ -39,7 +39,7 @@ func (p CreateIssueAuditResult) Auditable() map[string]any {
 
 // AttachCommentToIssueAuditParams holds request audit data for the attachCommentToIssue transaction.
 type AttachCommentToIssueAuditParams struct {
-	MattermostUserID      string `json:"mattermost_user_id"`
+	AntimatterUserID      string `json:"mattermost_user_id"`
 	GitlabUsername        string `json:"gitlab_username"`
 	ProjectID             int    `json:"project_id"`
 	IssueIID              int    `json:"issue_iid"`
@@ -49,7 +49,7 @@ type AttachCommentToIssueAuditParams struct {
 
 func (p AttachCommentToIssueAuditParams) Auditable() map[string]any {
 	return map[string]any{
-		"mattermost_user_id": p.MattermostUserID, "gitlab_username": p.GitlabUsername,
+		"mattermost_user_id": p.AntimatterUserID, "gitlab_username": p.GitlabUsername,
 		"project_id": p.ProjectID, "issue_iid": p.IssueIID, "post_id": p.PostID,
 		"comment_author_username": p.CommentAuthorUsername,
 	}
@@ -66,7 +66,7 @@ func (p AttachCommentToIssueAuditResult) Auditable() map[string]any {
 
 // AddWebhookAuditParams holds request audit data for the webhook add command.
 type AddWebhookAuditParams struct {
-	MattermostUserID string `json:"mattermost_user_id"`
+	AntimatterUserID string `json:"mattermost_user_id"`
 	GitlabUsername   string `json:"gitlab_username"`
 	Namespace        string `json:"namespace"`
 	URL              string `json:"url"`
@@ -74,7 +74,7 @@ type AddWebhookAuditParams struct {
 
 func (p AddWebhookAuditParams) Auditable() map[string]any {
 	return map[string]any{
-		"mattermost_user_id": p.MattermostUserID, "gitlab_username": p.GitlabUsername,
+		"mattermost_user_id": p.AntimatterUserID, "gitlab_username": p.GitlabUsername,
 		"namespace": p.Namespace, "url": p.URL,
 	}
 }
