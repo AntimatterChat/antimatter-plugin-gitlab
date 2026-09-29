@@ -1,6 +1,6 @@
 # Changelog
 
-ALl releases can be found at https://github.com/mattermost/mattermost-plugin-gitlab/releases.
+ALl releases can be found at https://github.com/antimatterchat/antimatter-plugin-gitlab/releases.
 
 ## 0.3.0 - 2019-06-05
 
@@ -16,7 +16,7 @@ ALl releases can be found at https://github.com/mattermost/mattermost-plugin-git
 - Rewrite all `pull request` to `merge request`
 - Display coverage with [codecov](https://codecov.io) [#37](https://github.com/manland/mattermost-plugin-gitlab/issues/37)
 - Add screenshot in [README.md](https://github.com/manland/mattermost-plugin-gitlab/blob/master/README.md) [#26](https://github.com/manland/mattermost-plugin-gitlab/issues/26)
-- Backport [mattermost-plugin-sample](https://github.com/mattermost/mattermost-plugin-sample/) infra code : use go mod, rework makefile to use sub-module, repair coverage [#27](https://github.com/manland/mattermost-plugin-gitlab/issues/27)
+- Backport the upstream plugin sample infra code : use go mod, rework makefile to use sub-module, repair coverage [#27](https://github.com/manland/mattermost-plugin-gitlab/issues/27)
 - From `Gitlab` to `GitLab` [#31](https://github.com/manland/mattermost-plugin-gitlab/issues/31)
 
 ## 0.2.0 - 2019-05-06
@@ -36,4 +36,4 @@ ALl releases can be found at https://github.com/mattermost/mattermost-plugin-git
 
 ## 0.1.0 - 2019-04-17
 
-- Get all code from [mattermost-plugin-github](https://github.com/mattermost/mattermost-plugin-github/) and adapt it for gitlab
+- Get all code from [antimatter-plugin-github](https://github.com/antimatterchat/antimatter-plugin-github/) and adapt it for gitlab

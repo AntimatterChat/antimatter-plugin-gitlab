@@ -1,23 +1,23 @@
-# Mattermost GitLab Plugin
+# Antimatter GitLab Plugin
 
-[![Build Status](https://img.shields.io/circleci/project/github/mattermost/mattermost-plugin-gitlab/master.svg)](https://circleci.com/gh/mattermost/mattermost-plugin-gitlab)
-[![Code Coverage](https://img.shields.io/codecov/c/github/mattermost/mattermost-plugin-gitlab/master.svg)](https://codecov.io/gh/mattermost/mattermost-plugin-gitlab)
-[![Release](https://img.shields.io/github/v/release/mattermost/mattermost-plugin-gitlab)](https://github.com/mattermost/mattermost-plugin-gitlab/releases/latest)
-[![HW](https://img.shields.io/github/issues/mattermost/mattermost-plugin-gitlab/Up%20For%20Grabs?color=dark%20green&label=Help%20Wanted)](https://github.com/mattermost/mattermost-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22Up+For+Grabs%22+label%3A%22Help+Wanted%22)
+[![Build Status](https://img.shields.io/circleci/project/github/antimatterchat/antimatter-plugin-gitlab/master.svg)](https://circleci.com/gh/antimatterchat/antimatter-plugin-gitlab)
+[![Code Coverage](https://img.shields.io/codecov/c/github/antimatterchat/antimatter-plugin-gitlab/master.svg)](https://codecov.io/gh/antimatterchat/antimatter-plugin-gitlab)
+[![Release](https://img.shields.io/github/v/release/antimatterchat/antimatter-plugin-gitlab)](https://github.com/antimatterchat/antimatter-plugin-gitlab/releases/latest)
+[![HW](https://img.shields.io/github/issues/antimatterchat/antimatter-plugin-gitlab/Up%20For%20Grabs?color=dark%20green&label=Help%20Wanted)](https://github.com/antimatterchat/antimatter-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22Up+For+Grabs%22+label%3A%22Help+Wanted%22)
 
-A GitLab plugin for Mattermost. This plugin supports a two-way integration between Mattermost and GitLab. This plugin supports Software-as-a-Service (SaaS) or on-premises versions of GitLab.
+A GitLab plugin for Antimatter. This plugin supports a two-way integration between Antimatter and GitLab. This plugin supports Software-as-a-Service (SaaS) or on-premises versions of GitLab.
 
 ![GitLab Plugin screenshot](https://user-images.githubusercontent.com/13119842/69115984-96b3ff80-0a58-11ea-92a3-9176b6b05a89.png)
 
-Originally developed by [Romain Maneschi](https://github.com/manland). This project is a fork of the [mattermost-plugin-github](https://github.com/mattermost/mattermost-plugin-github). Thanks to all contributors of it.
+Originally developed by [Romain Maneschi](https://github.com/manland). This project is a fork of the [antimatter-plugin-github](https://github.com/antimatterchat/antimatter-plugin-github). Thanks to all contributors of it.
 
-See the [Mattermost Product Documentation](https://docs.mattermost.com/integrate/gitlab-interoperability.html) for details on installing, configuring, enabling, and using this Mattermost integration.
+See the [Antimatter Product Documentation](https://docs.antimatter.example/integrate/gitlab-interoperability.html) for details on installing, configuring, enabling, and using this Antimatter integration.
 
-## Feature summary of GitLab to Mattermost notifications
+## Feature summary of GitLab to Antimatter notifications
 
 ### Channel subscriptions
 
-Notify your team of the latest updates by sending notifications from your GitLab group or repository to Mattermost channels. When team members log in the first time to Mattermost each day, they can get a post letting them know what issues and merge requests need their attention. They can also get a refresh of new events by selecting **Refresh** from every webhook configured in GitLab.
+Notify your team of the latest updates by sending notifications from your GitLab group or repository to Antimatter channels. When team members log in the first time to Antimatter each day, they can get a post letting them know what issues and merge requests need their attention. They can also get a refresh of new events by selecting **Refresh** from every webhook configured in GitLab.
 
 You can specify which events trigger a notification. They can see:
 
@@ -35,35 +35,35 @@ You can specify which events trigger a notification. They can see:
 
 ### Personal notifications: GitLab bot
 
-Each user in Mattermost is connected with their own personal GitLab account. Users can get a direct message in Mattermost when someone mentions them, requests their review, comments on, or modifies one of their merge requests/issues, or assigns them on GitLab.
+Each user in Antimatter is connected with their own personal GitLab account. Users can get a direct message in Antimatter when someone mentions them, requests their review, comments on, or modifies one of their merge requests/issues, or assigns them on GitLab.
 
 ### Sidebar buttons
 
-Team members can stay up-to-date with how many reviews, todos, assigned issues, and assigned merge requests they have by using buttons in the Mattermost sidebar.
+Team members can stay up-to-date with how many reviews, todos, assigned issues, and assigned merge requests they have by using buttons in the Antimatter sidebar.
 
 ## Development
   
-This plugin contains both a server and web app portion. Read our documentation about the [Developer Workflow](https://developers.mattermost.com/integrate/plugins/developer-workflow/) and [Developer Setup](https://developers.mattermost.com/integrate/plugins/developer-setup/) for more information about developing and extending plugins.
+This plugin contains both a server and web app portion. Read our documentation about the [Developer Workflow](https://docs.antimatter.example/integrate/plugins/developer-workflow/) and [Developer Setup](https://docs.antimatter.example/integrate/plugins/developer-setup/) for more information about developing and extending plugins.
   
 ## Help wanted!
 
-If you're interested in joining our community of developers who contribute to Mattermost - check out the current set of issues [that are being requested](https://github.com/mattermost/mattermost-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3AEnhancement).
+If you're interested in joining our community of developers who contribute to Antimatter - check out the current set of issues [that are being requested](https://github.com/antimatterchat/antimatter-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3AEnhancement).
 
-You can also find issues labeled ["Help Wanted"](https://github.com/mattermost/mattermost-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22) in the GitLab plugin repository that we have laid out the primary requirements for and could use some coding help from the community.
+You can also find issues labeled ["Help Wanted"](https://github.com/antimatterchat/antimatter-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22) in the GitLab plugin repository that we have laid out the primary requirements for and could use some coding help from the community.
 
 ## Help and support
 
-For Mattermost customers - please open a [support case](https://mattermost.zendesk.com/hc/en-us/requests/new) to ensure your issue is tracked properly.
+For Antimatter customers - please open a [support case](https://docs.antimatter.example/hc/en-us/requests/new) to ensure your issue is tracked properly.
 
-For Questions, suggestions, and help - please find us on our forum at [https://forum.mattermost.org/c/plugins](https://forum.mattermost.org/c/plugins).
+For Questions, suggestions, and help - please find us on our forum at [https://docs.antimatter.example/c/plugins](https://docs.antimatter.example/c/plugins).
 
-Alternatively, join our public Mattermost server and join the [Integrations and Apps channel](https://community.mattermost.com/core/channels/integrations).
+Alternatively, join our public Antimatter server and join the [Integrations and Apps channel](https://docs.antimatter.example/core/channels/integrations).
 
 ## Feedback and feature requests
 
-Feel free to create a GitHub issue or [join the GitLab Plugin channel on our community Mattermost instance](https://community.mattermost.com/core/channels/plugin-gitlab) to discuss.
+Feel free to create a GitHub issue or [join the GitLab Plugin channel on our community Antimatter instance](https://docs.antimatter.example/core/channels/plugin-gitlab) to discuss.
 
-Share your thoughts in the [Plugin: GitLab Channel](https://community.mattermost.com/core/channels/gitlab-plugin) on our Mattermost community!
+Share your thoughts in the [Plugin: GitLab Channel](https://docs.antimatter.example/core/channels/gitlab-plugin) on our Antimatter community!
 
 ### Releasing new versions
 
