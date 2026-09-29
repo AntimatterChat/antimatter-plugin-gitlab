@@ -225,7 +225,7 @@ func (p *Plugin) MessageWillBePosted(c *plugin.Context, post *model.Post) (*mode
 func (p *Plugin) setDefaultConfiguration() error {
 	config := p.getConfiguration()
 
-	changed, err := config.setDefaults(pluginapi.IsCloud(p.client.System.GetLicense()))
+	changed, err := config.setDefaults()
 	if err != nil {
 		return err
 	}

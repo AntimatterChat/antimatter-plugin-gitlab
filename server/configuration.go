@@ -68,7 +68,7 @@ func (c *configuration) ToMap() (map[string]any, error) {
 	return out, nil
 }
 
-func (c *configuration) setDefaults(isCloud bool) (bool, error) {
+func (c *configuration) setDefaults() (bool, error) {
 	changed := false
 
 	if c.EncryptionKey == "" {
@@ -88,11 +88,6 @@ func (c *configuration) setDefaults(isCloud bool) (bool, error) {
 		}
 
 		c.WebhookSecret = secret
-		changed = true
-	}
-
-	if isCloud && !c.UsePreregisteredApplication && !c.IsOAuthConfigured() {
-		c.UsePreregisteredApplication = true
 		changed = true
 	}
 
