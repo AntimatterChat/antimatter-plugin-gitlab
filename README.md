@@ -41,30 +41,20 @@ Each user in Antimatter is connected with their own personal GitLab account. Use
 
 Team members can stay up-to-date with how many reviews, todos, assigned issues, and assigned merge requests they have by using buttons in the Antimatter sidebar.
 
+## Feedback and support
+
+Found a bug in the GitLab plugin, or missing a feature? Please [open an
+issue](https://github.com/AntimatterChat/community/issues/new/choose) in the [Antimatter community
+repository](https://github.com/AntimatterChat/community), where the feedback for every part of
+Antimatter is gathered. Questions and ideas are welcome in its
+[Discussions](https://github.com/AntimatterChat/community/discussions). Please report security
+problems privately, as explained in the [security
+policy](https://github.com/AntimatterChat/.github/blob/main/SECURITY.md).
+
 ## Development
   
 This plugin contains both a server and web app portion. Read our documentation about the [Developer Workflow](https://docs.antimatter.example/integrate/plugins/developer-workflow/) and [Developer Setup](https://docs.antimatter.example/integrate/plugins/developer-setup/) for more information about developing and extending plugins.
   
-## Help wanted!
-
-If you're interested in joining our community of developers who contribute to Antimatter - check out the current set of issues [that are being requested](https://github.com/antimatterchat/antimatter-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3AEnhancement).
-
-You can also find issues labeled ["Help Wanted"](https://github.com/antimatterchat/antimatter-plugin-gitlab/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22) in the GitLab plugin repository that we have laid out the primary requirements for and could use some coding help from the community.
-
-## Help and support
-
-For Antimatter customers - please open a [support case](https://docs.antimatter.example/hc/en-us/requests/new) to ensure your issue is tracked properly.
-
-For Questions, suggestions, and help - please find us on our forum at [https://docs.antimatter.example/c/plugins](https://docs.antimatter.example/c/plugins).
-
-Alternatively, join our public Antimatter server and join the [Integrations and Apps channel](https://docs.antimatter.example/core/channels/integrations).
-
-## Feedback and feature requests
-
-Feel free to create a GitHub issue or [join the GitLab Plugin channel on our community Antimatter instance](https://docs.antimatter.example/core/channels/plugin-gitlab) to discuss.
-
-Share your thoughts in the [Plugin: GitLab Channel](https://docs.antimatter.example/core/channels/gitlab-plugin) on our Antimatter community!
-
 ### Releasing new versions
 
 The version of a plugin is determined at compile time, automatically populating a `version` field in the [plugin manifest](plugin.json):
