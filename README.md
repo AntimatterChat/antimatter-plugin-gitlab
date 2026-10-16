@@ -11,7 +11,7 @@ A GitLab plugin for Antimatter. This plugin supports a two-way integration betwe
 
 Originally developed by [Romain Maneschi](https://github.com/manland). This project is a fork of the [antimatter-plugin-github](https://github.com/antimatterchat/antimatter-plugin-github). Thanks to all contributors of it.
 
-See the [Antimatter Product Documentation](https://docs.antimatter.example/integrate/gitlab-interoperability.html) for details on installing, configuring, enabling, and using this Antimatter integration.
+See the [Antimatter Product Documentation](https://antimatter.chat/docs/admins/apps.html#integrations) for details on installing, configuring, enabling, and using this Antimatter integration.
 
 ## Feature summary of GitLab to Antimatter notifications
 
@@ -53,7 +53,7 @@ policy](https://github.com/AntimatterChat/.github/blob/main/SECURITY.md).
 
 ## Development
   
-This plugin contains both a server and web app portion. Read our documentation about the [Developer Workflow](https://docs.antimatter.example/integrate/plugins/developer-workflow/) and [Developer Setup](https://docs.antimatter.example/integrate/plugins/developer-setup/) for more information about developing and extending plugins.
+This plugin contains both a server and web app portion. Read our documentation about the [Developer Workflow](https://antimatter.chat/docs/developers/apps.html) and [Developer Setup](https://antimatter.chat/docs/developers/building.html) for more information about developing and extending plugins.
   
 ### Releasing new versions
 
