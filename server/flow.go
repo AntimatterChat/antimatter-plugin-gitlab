@@ -109,7 +109,7 @@ func (p *Plugin) NewFlowManager() (*FlowManager, error) {
 	webhookFlow.WithSteps(
 		fm.stepWebhookQuestion(),
 		flow.NewStep(stepWebhookConfirmation).
-			WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://docs.antimatter.example/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
+			WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://antimatter.chat/docs/users/apps.html#dev-tools)").
 			Terminal(),
 
 		fm.stepCancel("setup webhook"),
@@ -210,7 +210,7 @@ func cancelButton() flow.Button {
 func (fm *FlowManager) stepCancel(command string) flow.Step {
 	return flow.NewStep(stepCancel).
 		Terminal().
-		WithText(fmt.Sprintf("Gitlab integration setup has stopped. Restart setup later by running `/gitlab %s`. Learn more about the plugin [here](https://docs.antimatter.example/plugin-gitlab/).", command)).
+		WithText(fmt.Sprintf("Gitlab integration setup has stopped. Restart setup later by running `/gitlab %s`. Learn more about the plugin [here](https://antimatter.chat/docs/users/apps.html#dev-tools).", command)).
 		WithColor(flow.ColorDanger)
 }
 
@@ -262,7 +262,7 @@ func (fm *FlowManager) StartOauthWizard(userID string) error {
 }
 
 func (fm *FlowManager) stepWelcome() flow.Step {
-	welcomePretext := ":wave: Welcome to your GitLab integration! [Learn more](https://docs.antimatter.example/plugin-gitlab/)"
+	welcomePretext := ":wave: Welcome to your GitLab integration! [Learn more](https://antimatter.chat/docs/users/apps.html#dev-tools)"
 
 	welcomeText := `
 {{- if .UsePreregisteredApplication -}}
@@ -704,7 +704,7 @@ func (fm *FlowManager) stepWebhookWarning() flow.Step {
 func (fm *FlowManager) stepWebhookConfirmation() flow.Step {
 	return flow.NewStep(stepWebhookConfirmation).
 		WithTitle("Success! :tada: You've successfully set up your Antimatter GitLab integration! ").
-		WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://docs.antimatter.example/plugin-gitlab/feature-summary#subscribe-to-unsubscribe-from-a-repository)").
+		WithText("Use `/gitlab subscriptions add` to subscribe any Antimatter channel to your GitLab repository. [Learn more](https://antimatter.chat/docs/users/apps.html#dev-tools)").
 		Next("")
 }
 
@@ -722,7 +722,7 @@ func (fm *FlowManager) StartAnnouncementWizard(userID string) error {
 func (fm *FlowManager) stepAnnouncementQuestion() flow.Step {
 	defaultMessage := "Hi team,\n" +
 		"\n" +
-		"We've set up the Antimatter Gitlab plugin to enable notifications from Gitlab in Antimatter. To get started, run the `/gitlab connect` slash command from any channel within Antimatter to connect that channel with GitLab. See the [documentation](https://docs.antimatter.example/plugin-gitlab/) for details on using the GitLab plugin."
+		"We've set up the Antimatter Gitlab plugin to enable notifications from Gitlab in Antimatter. To get started, run the `/gitlab connect` slash command from any channel within Antimatter to connect that channel with GitLab. See the [documentation](https://antimatter.chat/docs/users/apps.html#dev-tools) for details on using the GitLab plugin."
 
 	return flow.NewStep(stepAnnouncementQuestion).
 		WithText("Want to let your team know?").
